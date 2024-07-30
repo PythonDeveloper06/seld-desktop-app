@@ -11,7 +11,7 @@
 <style lang="scss">
 :root {
 	--primary: #4aa3de;
-	--primary-alt: #22c55e;
+	--primary-alt: #2263c5;
 	--grey: #64748b;
 	--dark: #1e293b;
 	--dark-alt: #334155;
@@ -29,11 +29,27 @@
 	display: flex;
 
 	main {
-		flex: 1 1 0;
-
-		@media (max-width: 1024px) {
-			padding-left: 3.0rem;
-		}
+		flex: 1 0 0;
+    margin-left: 4rem;
 	}
+}
+
+.box-device {
+    padding: 20px;
+    background: var(--dark);
+    border-radius: 20px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 5px var(--primary-alt);
+    transition: all .50s ease;
+    color: white;
+}
+
+.btn-device {
+    border: 2px solid var(--primary);
+    transition: all .5s ease;
+
+    &:hover {
+        background-color: var(--primary-alt);
+    }
 }
 </style>

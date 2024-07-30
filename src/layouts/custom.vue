@@ -13,20 +13,20 @@
 
 			<div class="menu">
 
-				<router-link to="/about" class="button">
+				<nuxt-link to="/devices" class="button">
+					<span class="material-icons">home</span>
+					<span class="text">Devices</span>
+				</nuxt-link>
+
+				<nuxt-link to="/about" class="button">
 					<span class="material-icons">info</span>
 					<span class="text">About</span>
-				</router-link>
+				</nuxt-link>
 
-				<router-link to="/team" class="button">
+				<nuxt-link to="/team" class="button">
 					<span class="material-icons">group</span>
 					<span class="text">Team</span>
-				</router-link>
-
-				<router-link to="/contact" class="button">
-					<span class="material-icons">contact_page</span>
-					<span class="text">Contact</span>
-				</router-link>
+				</nuxt-link>
 
 				<div @click=" router.push('/'), userData.login = '' " class="button">
 					<span class="material-icons">logout</span>
@@ -41,7 +41,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import logoURL from '../assets/locked.png'
+import logoURL from '../assets/media/locked.png'
 import { useUserData } from '~/store/authuser';
 
 const userData = useUserData()
@@ -65,9 +65,10 @@ aside {
 	color: var(--light);
 
 	width: calc(2rem + 32px);
-	overflow: hidden;
 	min-height: 100vh;
 	padding: 1rem;
+	z-index: 99;
+	position: fixed;
 
 	transition: 0.2s ease-in-out;
 
@@ -200,11 +201,6 @@ aside {
 		.footer {
 			opacity: 0;
 		}
-	}
-
-	@media (max-width: 1024px) {
-		position: absolute;
-		z-index: 99;
 	}
 }
 </style>

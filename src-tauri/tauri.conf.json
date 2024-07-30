@@ -1,12 +1,12 @@
 {
   "productName": "seld",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "ru.seld.app",
   "build": {
-    "frontendDist": "../dist",
+    "frontendDist": "../.output/public",
     "devUrl": "http://localhost:3000",
     "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run generate"
+    "beforeBuildCommand": "npx nuxi generate"
   },
   "app": {
     "windows": [

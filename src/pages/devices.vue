@@ -1,6 +1,5 @@
 <script setup>
 import { useUserData } from '~/store/authuser';
-import Header from '../components/Header.vue';
 import { invoke } from '@tauri-apps/api/core';
 
 definePageMeta({
@@ -18,19 +17,17 @@ onBeforeUnmount(() => {
     clearInterval(setVar.value)
 });
 
-onBeforeMount(() => {
-    setVar.value = setInterval(async() => {
-        devices.value = await invoke('get_devices');
-    }, 1000);
-})
+setVar.value = setInterval(async() => {
+    devices.value = await invoke('get_devices');
+}, 1000);
 
 </script>
 
 <template>
     <main>
-        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-10 pt-5">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2 pt-5">
             <div v-for="key in devices">
-                <div class="max-w-sm rounded-lg overflow-hidden shadow-xl w-50 lg:w-100 p-4 border border-black-500">
+                <div class="max-w-sm overflow-hidden shadow-xl w-50 lg:w-100 p-4 border border-black-500 box-device">
                     <div class="grid grid-cols-2 py-0.5">
                         <label class="text-center">Device name</label>
                         <div class="text-center">
@@ -56,14 +53,10 @@ onBeforeMount(() => {
                         </div>
                     </div>
                     <div class="mt-2">
-                        <button type="button" @click=" router.push('/keys'), userData.serial_num = key.serial_num " class="items-center w-full p-1 border border-black-1000 hover:bg-gray-200 rounded">Ключи</button>
+                        <button type="button" @click=" router.push('/keys'), userData.serial_num = key.serial_num " class="items-center w-full p-1 rounded-lg btn-device">Ключи</button>
                     </div>
                 </div>            
             </div>
         </div>
     </main>
 </template>
-
-<style scoped>
-
-</style>
