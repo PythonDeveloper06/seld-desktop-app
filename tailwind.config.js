@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./src/components/**/*.{js,vue,ts}",
@@ -7,10 +8,14 @@ export default {
     "./src/plugins/**/*.{js,ts}",
     "./src/app.vue",
     "./src/error.vue",
+    './node_modules/preline/preline.js',
   ],
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms'),],
-}
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('preline/plugin'),
+  ],
+};
 

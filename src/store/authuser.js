@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { invoke } from "@tauri-apps/api/core"
 
 export const useUserData = defineStore('userdata', {
-    state: () => ({ login: "", password: "", message: "", serial_num: "" }),
+    state: () => ({ login: "", password: "", message: "", serial_num: "", id: "" }),
     actions: {
         async getUserToken() {
             this.message = await invoke('get_token', { login: this.login, password: this.password })

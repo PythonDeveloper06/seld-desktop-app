@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@pinia/nuxt'],
+  plugins: ["~/plugins/preline.client.ts"],
   // Enables the development server to be discoverable by other devices for mobile development
   devServer: { host: '0.0.0.0' },
   vite: {

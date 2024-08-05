@@ -17,6 +17,7 @@
     "@tauri-apps/api": "^2.0.0-beta.14",
     "nuxt": "^3.12.3",
     "pinia": "^2.1.7",
+    "preline": "^2.4.1",
     "vue": "latest"
   },
   "devDependencies": {
