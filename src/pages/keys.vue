@@ -14,6 +14,9 @@ definePageMeta({
 const keys = ref([]);
 const setVar = ref('');
 
+const date_time = ref("");
+const many_date = ref("");
+
 const params = {
     year: 'numeric',
     month: 'numeric',
@@ -67,7 +70,13 @@ function generateKey() {
 }
 
 async function createKey() {
-  form.time_end = new Date(form.time_end).toISOString().split('.')[0]+"Z";
+  
+  date_time.value = form.time_end.split(", ");
+
+  many_date.value = date_time.value[0].split(".").reverse();
+
+  form.time_end = many_date.value[0] + "-" + many_date.value[2] + "-" + many_date.value[1] + "T" + date_time.value[1] + "Z";
+
   await invoke('create_key', { form: form, serialNum: userData.serial_num });
   form.time_end = new Date().toLocaleString('ru-RU', params)
 }
@@ -115,7 +124,7 @@ async function deleteKey(pk) {
 
       </div>
 
-      <form class="space-y-5 px-24 py-7" method="post" @submit.prevent="createKey()">
+      <form class="space-y-5 px-16 py-7 sm:px-24" method="post" @submit.prevent="createKey()">
         <div>
           <label for="key" class="text-center block font-medium text-gray-900">Key</label>
           <div class="mt-2">

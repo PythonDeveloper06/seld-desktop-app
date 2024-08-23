@@ -5,7 +5,7 @@
   "build": {
     "frontendDist": "../.output/public",
     "devUrl": "http://localhost:3000",
-    "beforeDevCommand": "npm run dev",
+    "beforeDevCommand": "npm run dev --host",
     "beforeBuildCommand": "npx nuxi generate"
   },
   "app": {
@@ -14,8 +14,7 @@
         "title": "seld app",
         "width": 800,
         "height": 600,
-        "resizable": true,
-        "fullscreen": false
+        "resizable": true
       }
     ],
     "security": {

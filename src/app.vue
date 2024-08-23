@@ -17,6 +17,7 @@
 	--dark-alt: #334155;
 	--light: #f1f5f9;
 	--sidebar-width: 200px;
+  --bg-footer: #0e0226;
 }
 
 * {

@@ -28,7 +28,7 @@ async function getTokenOnRust() {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center px-6 py-20 lg:px-8">
+  <div class="flex flex-col justify-center items-center align-middle px-6 py-36 lg:px-8 md:py-24">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <img class="mx-auto h-10 w-auto" src="../assets/media/locked.png" alt="SELD" />
       <h2 class="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>

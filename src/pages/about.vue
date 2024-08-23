@@ -10,7 +10,7 @@ definePageMeta({
 
     <main>
         <div class="content">
-            <div class="image">
+            <div class="max-w-80 image">
                 <img src="../assets/media/seld_pixian_ai.png" alt="None" class="text_logo">
             </div>
             <p>
@@ -23,8 +23,8 @@ definePageMeta({
             </p>
         
 
-            <div class="container">
-                <h2 class="header">Мобильное приложение</h2>
+            <div class="">
+                <h2 class="header text-2xl md:text-3xl">Мобильное приложение</h2>
                 <p>
                     Приложение будет обладать удобным, красивым и минималистичным дизайном.
                     С помощью приложения пользователь сможет проводить настройку замка,
@@ -46,7 +46,8 @@ definePageMeta({
 <style scoped lang="scss">
 
 .content {
-    margin: 0 3rem;
+    margin: 0 1rem;
+    padding-bottom: 1rem;
 }
 
 .image {
@@ -54,24 +55,23 @@ definePageMeta({
     align-items: center;
     display: flex;
     position: relative;
-    margin-top: 1rem;
-}
-
-.image img {
-    max-width: 350px;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
     margin: auto;
 }
 
 .content p {
     font-size: 16px;
     text-align: justify;
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 12px;
 }
 
 main .header {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     color: var(--text-color);
     text-align: center;
-    font-size: 2rem;
     font-weight: 600;
 }
 
