@@ -1,5 +1,5 @@
 [package]
-name = "seld"
+name = "SELD"
 version = "0.2.5"
 description = "A Tauri App"
 authors = ["you"]
@@ -24,3 +24,11 @@ tauri = { version = "2.0.0-rc", features = [] }
 log = "^0.4"
 reqwest = { version = "0.11", features = ["json"] }
 lazy_static = { version = "1.4.0" }
+openssl-sys = { version = "0.9", features = ["vendored"] }
+
+[profile.release]
+panic = "abort" # Strip expensive panic clean-up logic
+codegen-units = 1 # Compile crates one after another so the compiler can optimize better
+lto = true # Enables link to optimizations
+opt-level = "s" # Optimize for binary size
+strip = true # Remove debug symbols
