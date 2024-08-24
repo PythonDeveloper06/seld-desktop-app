@@ -1,6 +1,6 @@
 {
   "productName": "SELD",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "identifier": "ru.seld.app",
   "build": {
     "frontendDist": "../.output/public",
