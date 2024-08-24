@@ -3,20 +3,6 @@
 version = 3
 
 [[package]]
-name = "SELD"
-version = "0.3.0"
-dependencies = [
- "lazy_static",
- "log",
- "openssl-sys",
- "reqwest 0.11.27",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
-]
-
-[[package]]
 name = "addr2line"
 version = "0.22.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2831,6 +2817,20 @@ checksum = "75da29fe9b9b08fe9d6b22b5b4bcbc75d8db3aa31e639aa56bb62e9d46bfceaf"
 dependencies = [
  "core-foundation-sys",
  "libc",
+]
+
+[[package]]
+name = "seld"
+version = "0.3.0"
+dependencies = [
+ "lazy_static",
+ "log",
+ "openssl-sys",
+ "reqwest 0.11.27",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
 ]
 
 [[package]]
