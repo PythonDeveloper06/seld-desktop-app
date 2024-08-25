@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SELD</string>
     <string name="main_activity_title">SELD</string>
+<<<<<<< HEAD
 </resources>
+=======
+</resources>
+>>>>>>> 6dd36de47024c082b2770d0eb2d0ac28edf93bbf
