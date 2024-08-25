@@ -70,12 +70,12 @@ function generateKey() {
 }
 
 async function createKey() {
-  
   date_time.value = form.time_end.split(", ");
-
   many_date.value = date_time.value[0].split(".").reverse();
+  form.time_end = many_date.value.join('-') + "T" + date_time.value[1];
 
-  form.time_end = many_date.value[0] + "-" + many_date.value[2] + "-" + many_date.value[1] + "T" + date_time.value[1] + "Z";
+  form.time_end = new Date(form.time_end).toISOString().split('.')[0]+"Z";
+  form.key = parseInt(form.key)
 
   await invoke('create_key', { form: form, serialNum: userData.serial_num });
   form.time_end = new Date().toLocaleString('ru-RU', params)
