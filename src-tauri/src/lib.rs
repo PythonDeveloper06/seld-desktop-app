@@ -17,7 +17,15 @@ struct Token {
     auth_token: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Default)]
+struct EntryData<T> {
+    count: i32,
+    next: Option<bool>,
+    previous: Option<bool>,
+    results: Vec<T>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, Default)]
 struct Devices {
     id: i32,
     device_name: String,
@@ -46,12 +54,13 @@ async fn get_token(login: String, password: String) -> String {
     map.insert("password", password);
     map.insert("username", login);
 
-    let response_get_token = CLIENT.post("https://seld-lock.ru/auth/token/login/")
+    let response_get_token = CLIENT.post("https://seldweb-production.up.railway.app/auth/token/login/")
     .header(CONTENT_TYPE, "application/json")
     .json(&map)
     .send()
     .await
     .unwrap();
+
 
     if response_get_token.status() == 400 {
         return response_get_token.status().to_string();
@@ -67,27 +76,27 @@ async fn get_token(login: String, password: String) -> String {
 
 #[tauri::command]
 async fn get_devices() -> Vec<Devices> {
-    let response_get_devices = CLIENT.get("https://seld-lock.ru/api/v1.0/devices/")
+    let response_get_devices = CLIENT.get("https://seldweb-production.up.railway.app/api/v1.0/devices/")
     .header(AUTHORIZATION, format!("Token {}", RESPONSE_TOKEN.lock().unwrap().clone()))
     .send()
     .await
     .unwrap();
 
-    response_get_devices.json::<Vec<Devices>>().await.unwrap()
+    response_get_devices.json::<EntryData<Devices>>().await.unwrap().results
 }
 
 
 #[tauri::command]
 async fn get_keys(serial_num: String) -> Vec<Keys> {
-    let url_get_keys = format!("https://seld-lock.ru/api/v1.0/devices/{}/keys/", serial_num);
+    let url_get_keys = format!("https://seldweb-production.up.railway.app/api/v1.0/devices/{}/keys/", serial_num);
 
-    let response_get_devices = CLIENT.get(url_get_keys)
+    let response_get_keys = CLIENT.get(url_get_keys)
     .header(AUTHORIZATION, format!("Token {}", RESPONSE_TOKEN.lock().unwrap().clone()))
     .send()
     .await
     .unwrap();
 
-    response_get_devices.json::<Vec<Keys>>().await.unwrap()
+    response_get_keys.json::<EntryData<Keys>>().await.unwrap().results
 }
 
 
@@ -102,7 +111,7 @@ async fn update_device(serial_num: String, change_param: String, value: String) 
         _ => None
     };
 
-    let url_update_device = format!("https://seld-lock.ru/api/v1.0/devices/{}/", serial_num);
+    let url_update_device = format!("https://seldweb-production.up.railway.app/api/v1.0/devices/{}/", serial_num);
 
     let _request_update_device = CLIENT.patch(url_update_device)
     .header(AUTHORIZATION, format!("Token {}", RESPONSE_TOKEN.lock().unwrap().clone()))
@@ -116,7 +125,7 @@ async fn update_device(serial_num: String, change_param: String, value: String) 
 
 #[tauri::command]
 async fn create_key(form: Keys, serial_num: String) {
-    let url_create_keys = format!("https://seld-lock.ru/api/v1.0/devices/{}/keys/", serial_num);
+    let url_create_keys = format!("https://seldweb-production.up.railway.app/api/v1.0/devices/{}/keys/", serial_num);
 
     let _response_create_devices = CLIENT.post(url_create_keys)
     .header(AUTHORIZATION, format!("Token {}", RESPONSE_TOKEN.lock().unwrap().clone()))
@@ -130,7 +139,7 @@ async fn create_key(form: Keys, serial_num: String) {
 
 #[tauri::command]
 async fn delete_key(pk: i32, serial_num: String) {
-    let url_delete_keys = format!("https://seld-lock.ru/api/v1.0/devices/{}/keys/{}/", serial_num, pk);
+    let url_delete_keys = format!("https://seldweb-production.up.railway.app/api/v1.0/devices/{}/keys/{}/", serial_num, pk);
 
     let _response_delete_devices = CLIENT.delete(url_delete_keys)
     .header(AUTHORIZATION, format!("Token {}", RESPONSE_TOKEN.lock().unwrap().clone()))

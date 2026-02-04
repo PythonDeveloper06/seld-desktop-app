@@ -89,24 +89,24 @@ aside {
 		display: flex;
 		justify-content: flex-end;
 		padding-right: 0.25rem;
-		margin-bottom: 1rem;
 
 		position: relative;
 		top: 0;
 		transition: 0.2s ease-in-out;
 
 		.menu-toggle {
-			transition: 0.2s ease-in-out;
+			transition: 0.2s ease-out;
 			.material-icons {
 				font-size: 1.5rem;
 				color: var(--light);
-				transition: 0.2s ease-out;
+				transition: 0.2s ease-in-out;
 			}
 			
 			&:hover {
 				.material-icons {
 					color: var(--primary);
 					transform: translateX(0.5rem);
+					transition: 0.2s ease-in-out;
 				}
 			}
 		}
